@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      @font-face {
+        font-family: "Ubuntu Regular";
+        src: url("../assets/fonts/Ubuntu-Regular.ttf");
+      }
+
+      @font-face {
+        font-family: "Ubuntu Medium";
+        src: url("../assets/fonts/Ubuntu-Medium.ttf");
+      }
+
+      @font-face {
+        font-family: "Ubuntu Bold";
+        src: url("../assets/fonts/Ubuntu-Bold.ttf");
+      }
+
+      body {
+        width: 325px;
+        height: 450px;
+        margin: 0;
+
+        background-color: #f2f2f2;
+        border: solid;
+        border-color: gray;
+        border-width: 0.5px;
+
+        /* https://stackoverflow.com/a/16805743/13692546 */
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      p {
+        margin: 0;
+        /* background-color: ; */
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      header {
+        /* position: fixed; */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 35px;
+        margin: 0;
+        border-bottom: 0.5px solid gray;
+
+        display: flex;
+        flex-direction: row;
+      }
+
+      section {
+        padding: 10px;
+      }
+
+      /* class */
+
+      .item {
+        /* position: static; */
+        width: 275px;
+        height: 35px;
+        background-color: white;
+        border-radius: 7px;
+        padding: 5px;
+        padding-left: 20px;
+        margin-bottom: 6px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+      }
+      .item img {
+        width: 16px;
+        height: 16px;
+        padding: 3px;
+        margin: 0;
+      }
+      .item p {
+        /* position: relative; */
+        /* margin-left: 20px; */
+        padding: 10px;
+      }
+
+      /* id */
+
+      #folderName {
+        /* position: relative;
+        left: 0;
+        top: 0;
+        margin: 0; */
+        width: 75%;
+        padding: 5px;
+        /* background-color: aqua; */
+      }
+      #folderName div {
+        font-family: "Ubuntu Bold", sans-serif;
+        margin: 3px;
+        padding: 2px;
+        /* background-color: white; */
+      }
+      #folderName a {
+        text-decoration: none;
+        color: currentColor;
+      }
+
+      #iconBar {
+        /* position: relative;
+        right: 0;
+        top: 0;
+        margin: 0; */
+        width: 25%;
+        padding: 5px;
+        /* background-color: blueviolet; */
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      #iconBar button {
+        border: none;
+        border-radius: 4px;
+        outline: none;
+        background: transparent;
+        width: 25px;
+        height: 25px;
+        margin: 0;
+        padding: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <header>
+        <div id="folderName">
+          <div>
+            <a href="#" class="hover">
+              <p style="display: inline">Main</p>
+            </a>
+            <img src="../assets/icons/iconmonstr-arrow-25-12.png" alt=">" />
+            <a href="#" class="hover">
+              <p style="display: inline">JavaScript</p>
+            </a>
+          </div>
+        </div>
+        <div id="iconBar">
+          <a href="addItem.html">
+            <button>
+              <img
+                src="../assets/icons/iconmonstr-plus-6-16.png"
+                alt="add"
+                style="display: block; width: 16px; height: 16px; padding: 3px"
+              />
+            </button>
+          </a>
+
+          <a href="#">
+            <button>
+              <img
+                src="../assets/icons/iconmonstr-edit-6-16.png"
+                alt="edit"
+                style="display: block; width: 16px; height: 16px; padding: 3px"
+              />
+            </button>
+          </a>
+
+          <a href="#">
+            <button>
+              <img
+                src="../assets/icons/iconmonstr-gear-2-16.png"
+                alt="setting"
+                style="display: block; width: 16px; height: 16px; margin: 3px"
+              />
+            </button>
+          </a>
+        </div>
+      </header>
+      <section>
+        <div class="item">
+          <img src="../assets/icons/iconmonstr-folder-2-16.png" alt="d" />
+          <p>npm</p>
+        </div>
+
+        <div class="item">
+          <img
+            src="../assets/icons/iconmonstr-link-7-12.png"
+            alt="d"
+            style="width: 12px; height: 12px"
+          />
+          <p>MDN - Event reference</p>
+        </div>
+      </section>
+    </article>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

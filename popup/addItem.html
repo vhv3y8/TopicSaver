@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <style>
+      @font-face {
+        font-family: "Ubuntu Regular";
+        src: url("../assets/fonts/Ubuntu-Regular.ttf");
+      }
+
+      @font-face {
+        font-family: "Ubuntu Medium";
+        src: url("../assets/fonts/Ubuntu-Medium.ttf");
+      }
+
+      @font-face {
+        font-family: "Ubuntu Bold";
+        src: url("../assets/fonts/Ubuntu-Bold.ttf");
+      }
+
+      body {
+        width: 325px;
+        height: 450px;
+        margin: 0;
+
+        background-color: #f2f2f2;
+        border: solid;
+        border-color: gray;
+        border-width: 0.5px;
+
+        /* https://stackoverflow.com/a/16805743/13692546 */
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      p {
+        margin: 0;
+        /* background-color: ; */
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      header {
+        /* position: fixed; */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 35px;
+        margin: 0;
+        /* padding: 5px; */
+        border-bottom: 0.5px solid gray;
+
+        display: flex;
+        flex-direction: row;
+      }
+
+      section {
+        padding: 10px;
+      }
+
+      #folderName {
+        /* position: relative;
+        left: 0;
+        top: 0;
+        margin: 0; */
+        width: 75%;
+        padding: 5px;
+        /* background-color: aqua; */
+      }
+      #folderName p {
+        font-family: "Ubuntu Bold", sans-serif;
+        margin: 3px;
+        padding: 2px;
+        /* background-color: white; */
+      }
+
+      #iconBar {
+        /* position: relative;
+        right: 0;
+        top: 0;
+        margin: 0; */
+        width: 25%;
+        padding: 5px;
+        /* background-color: blueviolet; */
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      #iconBar button {
+        border: none;
+        border-radius: 4px;
+        outline: none;
+        background: transparent;
+        width: 25px;
+        height: 25px;
+        margin: 0;
+        padding: 2px;
+      }
+
+      header p {
+        font-family: "Ubuntu Bold", sans-serif;
+        margin: 3px;
+        padding: 2px;
+      }
+
+      header button {
+        border: none;
+        border-radius: 4px;
+        outline: none;
+        background: transparent;
+        width: 25px;
+        height: 25px;
+        margin: 5px;
+        padding: 2px;
+      }
+
+      input[type="text"],
+      input[type="url"] {
+        border: none;
+        outline: none;
+        width: 220px;
+        height: 30px;
+        padding: 5px;
+        background-color: #e6e6e6;
+      }
+
+      label {
+        font-family: "Ubuntu Medium", sans-serif;
+      }
+
+      .itemdiv {
+        margin: 10px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #location {
+        font-family: "Ubuntu Bold", sans-serif;
+        background-color: #f2f2f2;
+      }
+
+      #submitBar {
+        margin-top: 30px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      .exit {
+        /* #submitBar a  */
+        /* was button*/
+        /* border-radius: 4px; */
+        /* border: #4d4d4d 0.5px solid; */
+        border: none;
+        outline: none;
+        width: 145px;
+        height: 40px;
+        display: inline-block;
+        background-color: #d9d9d9;
+        color: inherit;
+        text-decoration: none;
+        font-family: "Ubuntu Medium", sans-serif;
+        color: #595959;
+      }
+      .exit:hover {
+        cursor: pointer;
+        background-color: #b3b3b3;
+      }
+
+      #cancel {
+        background-color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      #cancel:hover {
+        cursor: pointer;
+        background-color: #e6e6e6;
+      }
+      /* #submitBar a {
+        display: inline-block;
+        width: 150px;
+        height: 40px;
+        padding: 0;
+        margin: 0;
+      } */
+    </style>
+  </head>
+  <body>
+    <article>
+      <header>
+        <a href="popup.html">
+          <button>
+            <img
+              src="../assets/icons/iconmonstr-arrow-64-16.png"
+              alt=""
+              style="width: 14px; height: 14px"
+            />
+          </button>
+        </a>
+      </header>
+      <section>
+        <form action="popup.html">
+          <div class="itemdiv">
+            <label for="newtitle">Title </label>
+            <input type="text" name="newtitle" id="" placeholder="Title Name" />
+          </div>
+
+          <div class="itemdiv">
+            <label for="location">Location </label>
+            <input
+              type="text"
+              value="Main > JavaScript"
+              id="location"
+              readonly
+            />
+          </div>
+
+          <div class="itemdiv">
+            <label for="link">URL </label>
+            <input
+              type="url"
+              name="link"
+              id=""
+              placeholder="https://www.google.com/"
+            />
+          </div>
+
+          <div id="submitBar">
+            <a href="popup.html" class="exit" id="cancel">
+              <p>Cancel</p>
+            </a>
+
+            <button type="submit" class="exit">
+              <p>Save</p>
+            </button>
+          </div>
+        </form>
+        <!-- <div></div>
+        <div></div>
+        <div></div> -->
+      </section>
+    </article>
+
+    <script src="addItem.js"></script>
+  </body>
+</html>
