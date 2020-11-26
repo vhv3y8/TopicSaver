@@ -213,10 +213,18 @@
         </a>
       </header>
       <section>
-        <form action="popup.html">
+        <form id="itemSubmit" action="#">
           <div class="itemdiv">
             <label for="newtitle">Title </label>
-            <input type="text" name="newtitle" id="" placeholder="Title Name" />
+            <input
+              type="text"
+              name="newtitle"
+              id=""
+              placeholder="Title Name"
+              autocomplete="off"
+              value="aasdfsafd"
+              required
+            />
           </div>
 
           <div class="itemdiv">
@@ -236,6 +244,9 @@
               name="link"
               id=""
               placeholder="https://www.google.com/"
+              value="https://asdfasfd"
+              autocomplete="off"
+              required
             />
           </div>
 

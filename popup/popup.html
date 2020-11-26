@@ -93,7 +93,7 @@
 
       /* id */
 
-      #folderName {
+      #folderBar {
         /* position: relative;
         left: 0;
         top: 0;
@@ -102,13 +102,13 @@
         padding: 5px;
         /* background-color: aqua; */
       }
-      #folderName div {
+      #folderBar div {
         font-family: "Ubuntu Bold", sans-serif;
         margin: 3px;
         padding: 2px;
         /* background-color: white; */
       }
-      #folderName a {
+      #folderBar a {
         text-decoration: none;
         color: currentColor;
       }
@@ -142,23 +142,23 @@
   <body>
     <article>
       <header>
-        <div id="folderName">
+        <div id="folderBar">
           <div>
-            <a href="#" class="hover">
+            <!-- <a href="#" class="hover">
               <p style="display: inline">Main</p>
             </a>
             <img src="../assets/icons/iconmonstr-arrow-25-12.png" alt=">" />
             <a href="#" class="hover">
               <p style="display: inline">JavaScript</p>
-            </a>
+            </a> -->
           </div>
         </div>
         <div id="iconBar">
           <a href="addItem.html">
             <button>
               <img
+                alt="Add Button"
                 src="../assets/icons/iconmonstr-plus-6-16.png"
-                alt="add"
                 style="display: block; width: 16px; height: 16px; padding: 3px"
               />
             </button>
@@ -167,8 +167,8 @@
           <a href="#">
             <button>
               <img
+                alt="Edit Button"
                 src="../assets/icons/iconmonstr-edit-6-16.png"
-                alt="edit"
                 style="display: block; width: 16px; height: 16px; padding: 3px"
               />
             </button>
@@ -177,28 +177,31 @@
           <a href="#">
             <button>
               <img
+                alt="Setting Button"
                 src="../assets/icons/iconmonstr-gear-2-16.png"
-                alt="setting"
                 style="display: block; width: 16px; height: 16px; margin: 3px"
               />
             </button>
           </a>
         </div>
       </header>
-      <section>
-        <div class="item">
-          <img src="../assets/icons/iconmonstr-folder-2-16.png" alt="d" />
-          <p>npm</p>
-        </div>
 
-        <div class="item">
+      <section>
+        <!-- Folder -->
+        <!-- <div class="item">
+          <img alt="Folder" src="../assets/icons/iconmonstr-folder-2-16.png" />
+          <p>npm</p>
+        </div> -->
+
+        <!-- URL -->
+        <!-- <div class="item">
           <img
+            alt="URL"
             src="../assets/icons/iconmonstr-link-7-12.png"
-            alt="d"
             style="width: 12px; height: 12px"
           />
           <p>MDN - Event reference</p>
-        </div>
+        </div> -->
       </section>
     </article>
 
