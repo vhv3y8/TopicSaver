@@ -8,8 +8,15 @@ chrome.runtime.onInstalled.addListener(function () {
         {
           name: "JavaScript",
           datas: {
-            folder: [],
-            link: [],
+            folders: [],
+            links: [],
+          },
+        },
+        {
+          name: "npm",
+          datas: {
+            folders: [],
+            links: [],
           },
         },
       ],

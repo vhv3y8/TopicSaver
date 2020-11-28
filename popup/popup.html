@@ -101,6 +101,11 @@
         width: 75%;
         padding: 5px;
         /* background-color: aqua; */
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
       }
       #folderBar div {
         font-family: "Ubuntu Bold", sans-serif;
@@ -111,6 +116,9 @@
       #folderBar a {
         text-decoration: none;
         color: currentColor;
+      }
+      #folderBar a p {
+        display: inline;
       }
 
       #iconBar {
@@ -143,15 +151,15 @@
     <article>
       <header>
         <div id="folderBar">
-          <div>
-            <!-- <a href="#" class="hover">
+          <!-- <div>
+            <a href="#" class="hover">
               <p style="display: inline">Main</p>
             </a>
             <img src="../assets/icons/iconmonstr-arrow-25-12.png" alt=">" />
             <a href="#" class="hover">
               <p style="display: inline">JavaScript</p>
-            </a> -->
-          </div>
+            </a>
+          </div> -->
         </div>
         <div id="iconBar">
           <a href="addItem.html">

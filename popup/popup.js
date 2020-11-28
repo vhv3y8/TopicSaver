@@ -17,6 +17,13 @@ let getDataBase = () => {
 let createFolderBar = function (folderStack) {
   // Data Format
   // var folderStack = ["Main", "JavaScript", "Chrome Extension"]
+  let copyStack;
+  for (let i = 0; i < folderStack.length; i++) {
+    // folderStack
+    // TOODO
+  }
+  console.log("copyStack is :");
+  // console.log(copyStack);
 
   let addArrowIcon = function () {
     // <img src="../assets/icons/iconmonstr-arrow-25-12.png" alt=">" />
@@ -26,23 +33,68 @@ let createFolderBar = function (folderStack) {
     return icon;
   };
   let addFolderName = function (name) {
+    let aTag = document.createElement("a");
+    aTag.setAttribute("href", "#");
+    // aTag.onmouseover.cursor = none;
+
     let folderName = document.createElement("p");
     folderName.innerHTML = name;
-    return folderName;
+    folderName.style.display = "inline";
+    folderName.style.padding = "3px";
+    let defaultColor;
+    folderName.addEventListener("mouseover", function () {
+      defaultColor = folderName.style.backgroundColor;
+      folderName.style.backgroundColor = "#cccccc";
+      // folderName.style.cursor = "pointer";
+    });
+    folderName.addEventListener("mouseout", function () {
+      folderName.style.backgroundColor = defaultColor;
+    });
+
+    aTag.appendChild(folderName);
+    return aTag;
   };
 
+  let bar = document.createElement("div");
+  bar.setAttribute("class", "folderBar");
   let element = document.createElement("div");
 
   // make html element
-  element.appendChild(addFolderName(folderStack.pop(0)));
+  console.log(copyStack);
+  element.appendChild(addFolderName(folderStack.shift()));
   while (folderStack.length) {
     element.appendChild(addArrowIcon());
-    element.appendChild(addFolderName(folderStack.pop(0)));
+    element.appendChild(addFolderName(folderStack.shift()));
   }
 
   // console.log(element);
 
-  return element;
+  // #folderBar {
+  //   /* position: relative;
+  //   left: 0;
+  //   top: 0;
+  //   margin: 0; */
+  //   width: 75%;
+  //   padding: 5px;
+  //   /* background-color: aqua; */
+  // }
+  // #folderBar div {
+  //   font-family: "Ubuntu Bold", sans-serif;
+  //   margin: 3px;
+  //   padding: 2px;
+  //   /* background-color: white; */
+  // }
+  // #folderBar a {
+  //   text-decoration: none;
+  //   color: currentColor;
+  // }
+
+  // style
+
+  let styles = { width: "75%", padding: "5px" };
+
+  bar.appendChild(element);
+  return bar;
 };
 
 // functions mapping json data into html element
@@ -115,13 +167,68 @@ let createURLItem = function (urlData) {
   let text = document.createElement("p");
   text.innerHTML = urlData.title;
 
-  // [icon, text].forEach((x) => element.appendChild(x));
-  element.appendChild(icon);
-  element.appendChild(text);
+  [icon, text].forEach((x) => element.appendChild(x));
+  // element.appendChild(icon);
+  // element.appendChild(text);
 
   // console.log(element);
 
   return element;
+};
+
+let createAddSelectItem = function () {
+  let element = document.createElement("div");
+  element.setAttribute("class", "item");
+  element.setAttribute("id", "addSelect"); // id="addSelect"
+
+  // add Events
+  let defaultColor;
+  element.addEventListener("mouseover", function () {
+    defaultColor = element.style.backgroundColor;
+    element.style.backgroundColor = "#E6E6E6";
+    element.style.cursor = "pointer";
+  });
+  element.addEventListener("mouseout", function () {
+    element.style.backgroundColor = defaultColor;
+  });
+
+  let createSelection = function () {
+    let element = document.createElement("div");
+  };
+
+  return element;
+};
+
+// sort functions
+let sortFolder = function (folders) {
+  let qsortName = function (arr) {
+    if (arr.length <= 1) return arr;
+    const [pivot, ...rest] = arr;
+    const lesser = rest.filter(
+      (x) => x.name.toLowerCase() <= pivot.name.toLowerCase()
+    );
+    const greater = rest.filter(
+      (x) => x.name.toLowerCase() > pivot.name.toLowerCase()
+    );
+    return [...qsortName(lesser), pivot, ...qsortName(greater)];
+  };
+
+  return qsortName(folders);
+};
+let sortLink = function (links) {
+  let qsortTitle = function (arr) {
+    if (arr.length <= 1) return arr;
+    const [pivot, ...rest] = arr;
+    const lesser = rest.filter(
+      (x) => x.title.toLowerCase() <= pivot.title.toLowerCase()
+    );
+    const greater = rest.filter(
+      (x) => x.title.toLowerCase() > pivot.title.toLowerCase()
+    );
+    return [...qsortTitle(lesser), pivot, ...qsortTitle(greater)];
+  };
+
+  return qsortTitle(links);
 };
 
 // runs when popup page is opened
@@ -129,12 +236,18 @@ window.onload = async (e) => {
   console.log("Window Successfully loaded.");
 
   var db = await getDataBase(); // database json
-  console.log(db);
-  var folderStack = ["Main", "JavaScript"];
+  console.log(Object.assign({}, db));
+  var folderStack = ["Main"];
 
   // Add Folder name to bar
   let folderBar = document.getElementById("folderBar");
   folderBar.appendChild(createFolderBar(folderStack));
+
+  // sort folders and links
+  db.folders = sortFolder(db.folders);
+  db.links = sortLink(db.links);
+  console.log("now db is:");
+  console.log(db);
 
   // Add data element into list
   let list = document.querySelector("article section");
