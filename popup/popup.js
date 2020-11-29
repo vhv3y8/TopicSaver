@@ -176,6 +176,7 @@ let createURLItem = function (urlData) {
   return element;
 };
 
+//  ????
 let createAddSelectItem = function () {
   let element = document.createElement("div");
   element.setAttribute("class", "item");
@@ -199,36 +200,39 @@ let createAddSelectItem = function () {
   return element;
 };
 
-// sort functions
-let sortFolder = function (folders) {
-  let qsortName = function (arr) {
-    if (arr.length <= 1) return arr;
-    const [pivot, ...rest] = arr;
-    const lesser = rest.filter(
-      (x) => x.name.toLowerCase() <= pivot.name.toLowerCase()
-    );
-    const greater = rest.filter(
-      (x) => x.name.toLowerCase() > pivot.name.toLowerCase()
-    );
-    return [...qsortName(lesser), pivot, ...qsortName(greater)];
-  };
+// object that contain functions about sorting list items.
+let sorter = {
+  // sort functions
+  qsortFolder: (folders) => {
+    let qsortName = function (arr) {
+      if (arr.length <= 1) return arr;
+      const [pivot, ...rest] = arr;
+      const lesser = rest.filter(
+        (x) => x.name.toLowerCase() <= pivot.name.toLowerCase()
+      );
+      const greater = rest.filter(
+        (x) => x.name.toLowerCase() > pivot.name.toLowerCase()
+      );
+      return [...qsortName(lesser), pivot, ...qsortName(greater)];
+    };
 
-  return qsortName(folders);
-};
-let sortLink = function (links) {
-  let qsortTitle = function (arr) {
-    if (arr.length <= 1) return arr;
-    const [pivot, ...rest] = arr;
-    const lesser = rest.filter(
-      (x) => x.title.toLowerCase() <= pivot.title.toLowerCase()
-    );
-    const greater = rest.filter(
-      (x) => x.title.toLowerCase() > pivot.title.toLowerCase()
-    );
-    return [...qsortTitle(lesser), pivot, ...qsortTitle(greater)];
-  };
+    return qsortName(folders);
+  },
+  qsortLink: (links) => {
+    let qsortTitle = function (arr) {
+      if (arr.length <= 1) return arr;
+      const [pivot, ...rest] = arr;
+      const lesser = rest.filter(
+        (x) => x.title.toLowerCase() <= pivot.title.toLowerCase()
+      );
+      const greater = rest.filter(
+        (x) => x.title.toLowerCase() > pivot.title.toLowerCase()
+      );
+      return [...qsortTitle(lesser), pivot, ...qsortTitle(greater)];
+    };
 
-  return qsortTitle(links);
+    return qsortTitle(links);
+  },
 };
 
 // runs when popup page is opened
@@ -244,8 +248,8 @@ window.onload = async (e) => {
   folderBar.appendChild(createFolderBar(folderStack));
 
   // sort folders and links
-  db.folders = sortFolder(db.folders);
-  db.links = sortLink(db.links);
+  db.folders = sorter.qsortFolder(db.folders);
+  db.links = sorter.qsortLink(db.links);
   console.log("now db is:");
   console.log(db);
 
@@ -257,6 +261,38 @@ window.onload = async (e) => {
   for (let i = 0; i < db.links.length; i++) {
     list.appendChild(createURLItem(db.links[i]));
   }
+
+  // let colorChange = function (color) {
+  //   document.body.style.backgroundColor = color;
+  // };
+  // var colorwas = document.body.style.backgroundColor;
+  // document.body.style.backgroundColor = "green";
+  // const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+  // await delay(300);
+  // colorChange(colorwas);
+
+  console.log(document.body.style.backgroundColor);
+};
+
+let folderRouter = function (folderObj, folderStack) {
+  let openFolder = function (folderObj, folderStack) {
+    // Data Format
+    // let folderObj = {
+    //   name: "folderName",
+    //   datas: {
+    //     folders: [],
+    //     links: [],
+    //   },
+    // };
+    // let folderStack = ["Main", "JavaScript", "Chrome Extension"];
+    // folderObj is db.folders.~~~~
+
+    document.querySelector("article section").remove(); // remove remaining list
+    let list = document.createElement("section");
+    let folderBar = document.getElementById("folderBar");
+  };
+
+  let;
 };
 
 // Adding events
