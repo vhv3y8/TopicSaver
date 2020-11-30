@@ -1,5 +1,8 @@
+import { folderRouter } from "./folderRouter.js";
+import { folderStack, db } from "../popup.js";
+
 // function mapping folder stack into html element
-let createFolderBar = function (folderStack) {
+let createFolderBarDiv = function (folderStack) {
   // Data Format
   // var folderStack = ["Main", "JavaScript", "Chrome Extension"]
   let copyStack;
@@ -7,7 +10,7 @@ let createFolderBar = function (folderStack) {
     // folderStack
     // TOODO
   }
-  console.log("copyStack is :");
+  // console.log("copyStack is :");
   // console.log(copyStack);
 
   let addArrowIcon = function () {
@@ -26,6 +29,8 @@ let createFolderBar = function (folderStack) {
     folderName.innerHTML = name;
     folderName.style.display = "inline";
     folderName.style.padding = "3px";
+
+    // add Events
     let defaultColor;
     folderName.addEventListener("mouseover", function () {
       defaultColor = folderName.style.backgroundColor;
@@ -35,22 +40,31 @@ let createFolderBar = function (folderStack) {
     folderName.addEventListener("mouseout", function () {
       folderName.style.backgroundColor = defaultColor;
     });
+    folderName.addEventListener("click", function () {
+      // TODO : db가 아니라 클릭한쪽으로 가야됨
+      folderStack = folderStack.slice(0, folderStack.indexOf(name) + 1);
+      // let
+      folderRouter.openFolder(db, folderStack);
+    });
 
     aTag.appendChild(folderName);
     return aTag;
   };
 
-  let bar = document.createElement("div");
-  bar.setAttribute("class", "folderBar");
+  // Flow Start
   let element = document.createElement("div");
 
   // make html element
-  console.log(copyStack);
-  element.appendChild(addFolderName(folderStack.shift()));
-  while (folderStack.length) {
+  element.appendChild(addFolderName(folderStack[0]));
+  for (let i = 1; i < folderStack.length; i++) {
     element.appendChild(addArrowIcon());
-    element.appendChild(addFolderName(folderStack.shift()));
+    element.appendChild(addFolderName(folderStack[i]));
   }
+  // element.appendChild(addFolderName(folderStack.shift()));
+  // while (folderStack.length) {
+  //   element.appendChild(addArrowIcon());
+  //   element.appendChild(addFolderName(folderStack.shift()));
+  // }
 
   // console.log(element);
 
@@ -78,8 +92,7 @@ let createFolderBar = function (folderStack) {
 
   let styles = { width: "75%", padding: "5px" };
 
-  bar.appendChild(element);
-  return bar;
+  return element;
 };
 
-export { createFolderBar };
+export { createFolderBarDiv, folderStack, db };

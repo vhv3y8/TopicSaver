@@ -151,15 +151,15 @@
     <article>
       <header>
         <div id="folderBar">
-          <!-- <div>
-            <a href="#" class="hover">
+          <div>
+            <!-- <a href="#" class="hover">
               <p style="display: inline">Main</p>
             </a>
             <img src="../assets/icons/iconmonstr-arrow-25-12.png" alt=">" />
             <a href="#" class="hover">
               <p style="display: inline">JavaScript</p>
-            </a>
-          </div> -->
+            </a> -->
+          </div>
         </div>
         <div id="iconBar">
           <a href="addItem.html">
@@ -194,7 +194,7 @@
         </div>
       </header>
 
-      <section>
+      <section id="listSection">
         <!-- Folder -->
         <!-- <div class="item">
           <img alt="Folder" src="../assets/icons/iconmonstr-folder-2-16.png" />
@@ -213,6 +213,9 @@
       </section>
     </article>
 
+    <script type="text/javascript">
+      var folderStack = [];
+    </script>
     <script type="module" src="./scripts/mouseEvents.js"></script>
     <script type="module" src="popup.js"></script>
   </body>
